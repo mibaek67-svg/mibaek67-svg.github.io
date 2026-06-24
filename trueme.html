@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRUE ME</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: #aaaaaa;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+    }
+
+    .questions {
+      font-size: 20px;
+      font-weight: 400;
+      color: #bbbbbb;
+      text-align: center;
+      line-height: 2.3;
+      margin-bottom: 40px;
+      letter-spacing: -0.01em;
+    }
+
+    .answer {
+      font-size: 30px;
+      font-weight: 500;
+      color: #111111;
+      text-align: center;
+      line-height: 1.65;
+      letter-spacing: -0.02em;
+      margin-bottom: 56px;
+    }
+
+    .cta {
+      display: inline-block;
+      background: #111111;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 14px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .cta:hover { opacity: 0.75; }
+
+    .divider {
+      width: 32px;
+      height: 1px;
+      background: #e5e5e5;
+      margin: 52px auto;
+    }
+
+    .tagline {
+      font-size: 12px;
+      color: #cccccc;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #0f0f0f; }
+      .questions { color: #555555; }
+      .answer { color: #f0f0f0; }
+      .cta { background: #f0f0f0; color: #111111; }
+      .divider { background: #222222; }
+      .eyebrow, .tagline { color: #444444; }
+    }
+
+    @media (max-width: 480px) {
+      .questions { font-size: 17px; }
+      .answer { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <p class="eyebrow">True Me</p>
+  <p class="questions">
+    왜 돈을 버는지.<br>
+    왜 자유를 원하는지.<br>
+    왜 이 삶을 살고 있는지.
+  </p>
+  <p class="answer">
+    남의 이유가 아니라,<br>나의 이유를 찾았다.
+  </p>
+  <a class="cta" href="https://chatgpt.com/g/g-6a3ba25c2268819186c818af46707445-true-me" target="_blank">대화 시작하기</a>
+  <div class="divider"></div>
+  <p class="tagline">Custom GPT · 무료</p>
+</body>
+</html>
