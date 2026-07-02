@@ -418,7 +418,7 @@ function shareToKakao() {
     objectType: "feed",
     content: {
       title: "오늘의 버프 냥이",
-      description: `나는 ${result.title} 받았다냥!`,
+      description: `나는 ${result.title} 받았다냥! 너도 받아보라냥`,
       imageUrl,
       link: {
         mobileWebUrl: shareUrl,
@@ -427,7 +427,7 @@ function shareToKakao() {
     },
     buttons: [
       {
-        title: "내 버프 냥이 찾기",
+        title: "내 냥이도 찾기",
         link: {
           mobileWebUrl: shareUrl,
           webUrl: shareUrl,
