@@ -151,6 +151,9 @@ const state = {
   resultKey: "",
 };
 
+const PUBLIC_BASE_URL = "https://mibaek67-svg.github.io/";
+const KAKAO_JS_KEY = "8158f304dfe304fb6af8fe0d64558453";
+
 const previewCatImages = [
   "assets/cats/01_confidence.png",
   "assets/cats/02_joy.png",
@@ -340,7 +343,7 @@ async function copyShareLink() {
 }
 
 function getResultUrl() {
-  const url = new URL(window.location.href);
+  const url = new URL(PUBLIC_BASE_URL);
 
   if (state.resultKey) {
     url.searchParams.set("result", state.resultKey);
@@ -380,7 +383,54 @@ function closeShareModal() {
 }
 
 function showKakaoPending() {
-  showToast("카카오톡 공유는<br />GitHub Pages 연결 후 붙인다냥!");
+  shareToKakao();
+}
+
+function initKakaoShare() {
+  if (!window.Kakao || window.Kakao.isInitialized()) {
+    return;
+  }
+
+  window.Kakao.init(KAKAO_JS_KEY);
+}
+
+function shareToKakao() {
+  if (!state.resultKey) {
+    return;
+  }
+
+  if (!window.Kakao || !window.Kakao.Share) {
+    showToast("카카오톡 공유 준비가<br />아직 안 됐다냥.");
+    return;
+  }
+
+  initKakaoShare();
+
+  const result = results[state.resultKey];
+  const resultUrl = getResultUrl().toString();
+  const imageUrl = new URL(result.image, PUBLIC_BASE_URL).toString();
+
+  window.Kakao.Share.sendDefault({
+    objectType: "feed",
+    content: {
+      title: "오늘의 버프 냥이",
+      description: `나는 ${result.title} 받았다냥!`,
+      imageUrl,
+      link: {
+        mobileWebUrl: resultUrl,
+        webUrl: resultUrl,
+      },
+    },
+    buttons: [
+      {
+        title: "내 버프 냥이 보기",
+        link: {
+          mobileWebUrl: resultUrl,
+          webUrl: resultUrl,
+        },
+      },
+    ],
+  });
 }
 
 function showToast(message) {
@@ -415,4 +465,5 @@ document.querySelectorAll("[data-close-share]").forEach((element) => {
 
 window.setInterval(rotatePreviewCat, 1200);
 
+initKakaoShare();
 loadResultFromUrl();
