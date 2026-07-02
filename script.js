@@ -332,7 +332,7 @@ function saveResultCount(key) {
 }
 
 async function copyShareLink() {
-  const url = getResultUrl();
+  const url = getShareUrl();
 
   try {
     await navigator.clipboard.writeText(url.toString());
@@ -340,6 +340,10 @@ async function copyShareLink() {
   } catch {
     showToast("복사가 막혔다냥<br />주소창 링크를 복사해달라냥.");
   }
+}
+
+function getShareUrl() {
+  return new URL(PUBLIC_BASE_URL);
 }
 
 function getResultUrl() {
@@ -407,7 +411,7 @@ function shareToKakao() {
   initKakaoShare();
 
   const result = results[state.resultKey];
-  const resultUrl = getResultUrl().toString();
+  const shareUrl = getShareUrl().toString();
   const imageUrl = new URL(result.image, PUBLIC_BASE_URL).toString();
 
   window.Kakao.Share.sendDefault({
@@ -417,16 +421,16 @@ function shareToKakao() {
       description: `나는 ${result.title} 받았다냥!`,
       imageUrl,
       link: {
-        mobileWebUrl: resultUrl,
-        webUrl: resultUrl,
+        mobileWebUrl: shareUrl,
+        webUrl: shareUrl,
       },
     },
     buttons: [
       {
-        title: "내 버프 냥이 보기",
+        title: "내 버프 냥이 찾기",
         link: {
-          mobileWebUrl: resultUrl,
-          webUrl: resultUrl,
+          mobileWebUrl: shareUrl,
+          webUrl: shareUrl,
         },
       },
     ],
